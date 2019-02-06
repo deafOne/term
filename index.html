@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html id="html">
+  <head>
+    <meta charset="utf-8">
+    <title>ExposeTMC | </title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+  </head>
+<body>
+  <div class="startup" id="startup">
+    <pre>
+8888888888                                                                                           
+888                                                                                                  
+888                                                                                                  
+8888888    888  888 88888b.   .d88b.  .d8888b   .d88b.                                               
+888        `Y8bd8P' 888 "88b d88""88b 88K      d8P  Y8b                                              
+888          X88K   888  888 888  888 "Y8888b. 88888888                                              
+888        .d8""8b. 888 d88P Y88..88P      X88 Y8b.                                                  
+8888888888 888  888 88888P"   "Y88P"   88888P'  "Y8888                                               
+                    888                                                                              
+                    888                                                                              
+                    888                                                                              
+88888888888 888b     d888  .d8888b.       88888888888 8888888b.         d8888 888b    888  .d8888b.  
+    888     8888b   d8888 d88P  Y88b          888     888   Y88b       d88888 8888b   888 d88P  Y88b 
+    888     88888b.d88888 888    888          888     888    888      d88P888 88888b  888 Y88b.      
+    888     888Y88888P888 888                 888     888   d88P     d88P 888 888Y88b 888  "Y888b.   
+    888     888 Y888P 888 888                 888     8888888P"     d88P  888 888 Y88b888     "Y88b. 
+    888     888  Y8P  888 888    888          888     888 T88b     d88P   888 888  Y88888       "888 
+    888     888   "   888 Y88b  d88P          888     888  T88b   d8888888888 888   Y8888 Y88b  d88P 
+    888     888       888  "Y8888P"           888     888   T88b d88P     888 888    Y888  "Y8888P"  
+    </pre>
+    <br><br>
+  </div>
+
+
+<ul class="flex-container">
+  <li class="flex-item">
+    <div class="name"></div>
+    </a>
+  </li>
+  <li class="flex-item">
+    <div class="terminal-complete" onclick="document.getElementById('input').focus()">
+      <div class="header" id="header"> Terminal <span style="float:right;margin-right:10px;cursor:default;" onclick="closeTerminal()">X</span></div>
+      <div class="terminal-bg" id="terminal-bg">
+        <div class="terminal" id="terminal">
+          Welcome to ExposeTMC. All information found on this site is completely Factual with documents with proof of allegations.<br><br>Please type "help" for a list of commands.<br>
+          <div class="terminal-response" id="console-text" style="display: inline";>ExposeTMC~$</div>
+          <input type=text id="input" autofocus="true" onkeypress="pressedEnter(event)"></input>
+          </div>
+      </div>
+    </div>
+  </li>
+</ul>
+<script type="text/javascript">
+  function sleep(milliseconds) {
+  var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  };
+
+  var div = document.getElementById('startup');
+
+  function insertText(string, length) {
+    setTimeout(function() {
+      div.innerHTML += "<pre>" + string + "</pre>";
+    }, length);
+  }
+
+  function startDOM() {
+    setTimeout(function() {
+      document.getElementById('html').style.backgroundColor = "lightgrey";
+      document.getElementById('startup').style.display = "none";
+    }, 4500);
+  }
+
+  insertText('mounting /Virtual_Machine/ExposeTMCTRANS  [<span style="color:lime">Ok</span>]', 1500);
+  insertText('gathering Facts                           [<span style="color:lime">Ok</span>]', 2000);
+  insertText('compiling HTML                            [<span style="color:lime">Ok</span>]', 2500);
+  insertText('inserting CSS                             [<span style="color:lime">Ok</span>]', 3000);
+  insertText('starting JavaScript                       [<span style="color:lime">Ok</span>]', 3500);
+  insertText('preparing /Documents/Proof/               [<span style="color:lime">Ok</span>]', 4000);
+  insertText('preparation Completed                     [<span style="color:lime">Ok</span>]', 4500);
+  insertText('opening TERMINAL                          [<span style="color:lime">Ok</span>]', 5000);
+  startDOM();
+
+
+  var consoletext = document.getElementById('console-text');
+
+  function openTerminal() {
+    document.getElementById('terminal-bg').style.visibility = "visible";
+    document.getElementById('header').style.visibility = "visible";
+    document.getElementById('input').focus();
+  }
+  function closeTerminal() {
+    document.getElementById('terminal-bg').style.visibility = "hidden";
+    document.getElementById('header').style.visibility = "hidden";
+  };
+
+  function populateTerminal(text) {
+    var input = document.getElementById('input').value;
+    var tty = "ExposeTMC~$ " + input + "<br>";
+    consoletext.innerHTML = consoletext.innerHTML + tty + text + "<br>";
+    document.getElementById('input').value = "";
+    document.getElementById('terminal-bg').scrollTop = document.getElementById('terminal-bg').scrollHeight;
+  };
+
+  function pressedEnter(e) {
+    var input = document.getElementById('input').value.toLowerCase();
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+      input = input.trim();
+      if (input == "help") {
+        populateTerminal("Commands: next, help");
+      }
+      else if (input == "next") {
+        populateTerminal("Exposing TMCTRANS")
+        window.location = 'https://www.ExposeTMC.com';
+      }
+      else {
+        populateTerminal('Invalid input, please type "help" for a list of commands.')
+      }
+    
+    }
+  }
+</script>
+</body>
+</html>
